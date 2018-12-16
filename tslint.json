@@ -16,8 +16,10 @@
     "trailing-comma": false,
     "no-string-literal": false,
     "jsx-wrap-multiline": false,
-    "array-type": [true, "array"]
+    "array-type": [true, "array"],
+    "no-shadowed-variable": false
   },
+  "defaultSeverity": "warning",
   "linterOptions": {
     "exclude": ["config/**/*.js", "node_modules/**/*.ts", "coverage/lcov-report/*.js"]
   }
