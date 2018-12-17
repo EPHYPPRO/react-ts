@@ -13,7 +13,7 @@ export class ListState<T = SelectItem> {
 export class State {
   selectedBrandId: number = -1;
   selectedModelId: number = -1;
-  // keywords: string = '';
+  keywords: string = '';
   brands: ListState = new ListState();
   models: ListState = new ListState();
 }
