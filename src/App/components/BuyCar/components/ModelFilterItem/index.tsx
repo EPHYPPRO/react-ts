@@ -1,19 +1,61 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { SelectFilterItem } from 'src/App/components/common/SelectFilterItem';
+import {
+  SelectFilterItem,
+  SelectItem
+} from 'src/App/components/common/SelectFilterItem';
+import { State } from 'src/store/state';
+import { selectModel, requestModels } from './actions';
 
-class ModelFilterItem extends Component<any, any> {
+interface ModelFilterItemProps {
+  selectedModelId: number;
+  selectModel: typeof selectModel;
+  models: SelectItem[];
+  isLoading: boolean;
+  error: boolean;
+  selectedBrandId: number;
+  requestModels: typeof requestModels;
+}
+
+class ModelFilterItem extends Component<ModelFilterItemProps, any> {
+  componentWillMount() {
+    this.props.requestModels();
+  }
+
   handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    // const id: number = +event.target.value;
+    const id: number = +event.target.value;
+    this.props.selectModel(id);
   }
 
   render() {
+    const { selectedModelId, models, isLoading, error, selectedBrandId } = this.props;
+
     return (
       <>
-        <SelectFilterItem label="Model:" items={ [] } handleChange={ this.handleChange }/>
+        <SelectFilterItem
+          label="Model:"
+          id={ selectedModelId }
+          items={ models }
+          handleChange={ this.handleChange }
+          isLoading={ isLoading }
+          error={ error }
+          defaultItemValue={ selectedBrandId === -1 ?  '- Select a brand first -' : '- Select a Model -' }
+        />
       </>
     );
   }
 }
 
-export default connect()(ModelFilterItem);
+export default connect(
+  ({ selectedModelId, models, selectedBrandId }: State) => ({
+    selectedModelId,
+    models: models.items,
+    isLoading: models.isLoading,
+    error: models.error,
+    selectedBrandId
+  }),
+  {
+    selectModel,
+    requestModels
+  }
+)(ModelFilterItem);
