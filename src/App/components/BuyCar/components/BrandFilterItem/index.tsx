@@ -31,8 +31,7 @@ class BrandFilterItem extends Component<BrandFilterItemProps, any> {
     this.props.requestBrands();
   }
 
-  handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const id: number = +event.target.value;
+  handleChange = (id: number) => {
     this.props.selectBrand(id);
     id === this.emptyBrandId
       ? this.props.receiveModels([])

@@ -22,13 +22,18 @@ class ModelFilterItem extends Component<ModelFilterItemProps, any> {
     this.props.requestModels();
   }
 
-  handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const id: number = +event.target.value;
+  handleChange = (id: number) => {
     this.props.selectModel(id);
   }
 
   render() {
-    const { selectedModelId, models, isLoading, error, selectedBrandId } = this.props;
+    const {
+      selectedModelId,
+      models,
+      isLoading,
+      error,
+      selectedBrandId
+    } = this.props;
 
     return (
       <>
@@ -39,7 +44,11 @@ class ModelFilterItem extends Component<ModelFilterItemProps, any> {
           handleChange={ this.handleChange }
           isLoading={ isLoading }
           error={ error }
-          defaultItemValue={ selectedBrandId === -1 ?  '- Select a brand first -' : '- Select a Model -' }
+          defaultItemValue={
+            selectedBrandId === -1
+              ? '- Select a brand first -'
+              : '- Select a Model -'
+          }
         />
       </>
     );

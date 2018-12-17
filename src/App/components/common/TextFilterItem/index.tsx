@@ -5,13 +5,24 @@ import { TextField } from '@material-ui/core';
 
 interface TextFilterItemProps extends FilterItemProps {
   text: string;
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (keywords: string) => void;
 }
 
-export const TextFilterItem: SFC<TextFilterItemProps> = ({ label, text, handleChange }) => (
+const handleEventChange = (handler: (keywords: string) => void) => (
+  event: React.ChangeEvent<HTMLInputElement>
+) => handler(event.target.value);
+
+export const TextFilterItem: SFC<TextFilterItemProps> = ({
+  label,
+  text,
+  handleChange
+}) => (
   <>
     <FilterItem label={ label }>
-      <TextField fullWidth={ true } onChange={ handleChange }>
+      <TextField
+        fullWidth={ true }
+        onChange={ handleEventChange(handleChange) }
+      >
         { text }
       </TextField>
     </FilterItem>

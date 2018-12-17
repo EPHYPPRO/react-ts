@@ -14,8 +14,12 @@ interface SelectFilterItemProps extends FilterItemProps {
   defaultItemValue?: string;
   isLoading?: boolean;
   error?: boolean;
-  handleChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleChange: (id: number) => void;
 }
+
+const handleEventChange = (handler: (id: number) => void) => (
+  event: React.ChangeEvent<HTMLSelectElement>
+) => handler(+event.target.value);
 
 export const SelectFilterItem: SFC<SelectFilterItemProps> = ({
   label,
@@ -28,7 +32,11 @@ export const SelectFilterItem: SFC<SelectFilterItemProps> = ({
 }) => (
   <>
     <FilterItem label={ label }>
-      <Select fullWidth={ true } value={ id } onChange={ handleChange }>
+      <Select
+        fullWidth={ true }
+        value={ id }
+        onChange={ handleEventChange(handleChange) }
+      >
         { defaultItemValue && (
           <MenuItem value={ -1 } key={ 0 }>
             { defaultItemValue }
