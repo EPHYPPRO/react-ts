@@ -64,7 +64,7 @@ export default connect(
     selectedBrandId,
     brands: brands.items,
     isLoading: brands.isLoading,
-    brandsError: brands.error
+    error: brands.error
   }),
   {
     selectBrand,
