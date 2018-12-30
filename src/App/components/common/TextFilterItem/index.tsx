@@ -3,14 +3,14 @@ import './style.scss';
 import { FilterItem, FilterItemProps } from '../FilterItem';
 import { TextField } from '@material-ui/core';
 
-interface TextFilterItemProps extends FilterItemProps {
-  text: string;
-  handleChange: (keywords: string) => void;
+export interface TextFilterItemProps extends FilterItemProps {
+  text?: string;
+  handleChange?: (keywords: string) => void;
 }
 
-const handleEventChange = (handler: (keywords: string) => void) => (
+const handleEventChange = (handler?: (keywords: string) => void) => (
   event: React.ChangeEvent<HTMLInputElement>
-) => handler(event.target.value);
+) => handler && handler(event.target.value);
 
 export const TextFilterItem: FC<TextFilterItemProps> = ({
   label,
