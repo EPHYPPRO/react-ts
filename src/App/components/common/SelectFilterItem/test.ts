@@ -60,6 +60,7 @@ describe('SelectFilterItem', () => {
     render({
       handleChange,
       items: [item1, item2],
+      open: true
     });
 
     // items block rendered in the end of the body
