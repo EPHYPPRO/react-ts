@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterItem should render properly 1`] = `
+<div
+  class="filter-item"
+>
+  <div
+    class="label"
+    data-testid="label"
+  >
+    label text
+  </div>
+  content
+</div>
+`;
