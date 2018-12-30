@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import React, { FC } from 'react';
 import './style.scss';
 import { FilterItem, FilterItemProps } from '../FilterItem';
 import { TextField } from '@material-ui/core';
@@ -12,7 +12,7 @@ const handleEventChange = (handler: (keywords: string) => void) => (
   event: React.ChangeEvent<HTMLInputElement>
 ) => handler(event.target.value);
 
-export const TextFilterItem: SFC<TextFilterItemProps> = ({
+export const TextFilterItem: FC<TextFilterItemProps> = ({
   label,
   text,
   handleChange
