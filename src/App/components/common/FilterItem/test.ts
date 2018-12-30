@@ -1,9 +1,5 @@
-import * as React from 'react';
-import { FilterItem, FilterItemProps } from '.';
-import { getConfiguredRender } from 'test-utils/configured-render';
 import fake from 'casual';
-
-const render = getConfiguredRender<FilterItemProps>(<FilterItem />);
+import { render, checkForLabelRender } from './test.utils';
 
 describe('FilterItem', () => {
   it('should render properly', async () => {
@@ -24,11 +20,6 @@ describe('FilterItem', () => {
   });
 
   it('should render label', async () => {
-    const label = fake.title;
-    const { getByTestId } = render({ label });
-
-    expect(getByTestId('label')).toHaveTextContent(
-      new RegExp(label)
-    );
+    checkForLabelRender(render);
   });
 });

@@ -1,6 +1,7 @@
 import fake from 'casual';
 import { buildItem, render } from './test.utils';
 import { fireEvent } from 'react-testing-library';
+import { checkForLabelRender } from '../FilterItem/test.utils';
 
 describe('SelectFilterItem', () => {
   it('should render properly', async () => {
@@ -59,7 +60,6 @@ describe('SelectFilterItem', () => {
     render({
       handleChange,
       items: [item1, item2],
-      open: true
     });
 
     // items block rendered in the end of the body
@@ -69,5 +69,9 @@ describe('SelectFilterItem', () => {
     element1 && fireEvent.click(element1);
 
     expect(handleChange).toHaveBeenCalledWith(item1.id);
+  });
+
+  it('should render label', async () => {
+    checkForLabelRender(render);
   });
 });

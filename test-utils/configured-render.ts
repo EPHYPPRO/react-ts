@@ -12,6 +12,10 @@ export function getConfiguredRender<P>(
       utils.rerender(React.cloneElement(ui, props));
     };
 
-    return { ...utils, rerender, component: utils.container.firstChild };
+    return {
+      ...utils,
+      rerender,
+      component: utils.container.firstChild as HTMLElement
+    };
   };
 }
