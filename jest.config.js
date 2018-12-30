@@ -1,4 +1,5 @@
 module.exports = {
+  setupTestFrameworkScriptFile: require.resolve('./config/jest/setupTestFramework'),
   collectCoverageFrom: ["src/**/*.{js,jsx,ts,tsx}", "!**/*.d.ts"],
   setupFiles: ["<rootDir>/config/polyfills.js"],
   testMatch: [
@@ -19,9 +20,10 @@ module.exports = {
   ],
   moduleNameMapper: {
     "src(.*)$": "<rootDir>/src/$1",
+    "test-utils(.*)$": "<rootDir>/test-utils/$1",
     "^react-native$": "react-native-web"
   },
-  modulePaths: ["<rootDir>/src", "<rootDir>/src/App"],
+  modulePaths: ["<rootDir>/src"],
   moduleFileExtensions: [
     "web.ts",
     "ts",
@@ -41,6 +43,6 @@ module.exports = {
     }
   },
   babel: {
-    presets: "./.babelrc.js"
+    presets: "react-app"
   }
 };
