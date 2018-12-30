@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectFilterItem should render properly 1`] = `
+<div
+  class="filter-item"
+>
+  <div
+    class="label"
+    data-testid="label"
+  >
+    label text
+  </div>
+  <div
+    class="MuiInputBase-root-21 MuiInput-root-8 MuiInput-underline-12 MuiInputBase-fullWidth-30 MuiInput-fullWidth-15"
+    data-testid="select"
+  >
+    <div
+      class="MuiSelect-root-1"
+    >
+      <div
+        class="MuiSelect-select-2 MuiSelect-selectMenu-5 MuiInputBase-input-31 MuiInput-input-16"
+        aria-pressed="false"
+        tabindex="0"
+        role="button"
+        aria-haspopup="true"
+      >
+        item 1
+      </div>
+      <input
+        type="hidden"
+        value="1"
+      />
+      <svg
+        class="MuiSvgIcon-root-38 MuiSelect-icon-7"
+        focusable="false"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        role="presentation"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;

@@ -8,51 +8,56 @@ export interface SelectItem {
   text: string;
 }
 
-interface SelectFilterItemProps extends FilterItemProps {
+export interface SelectFilterItemProps extends FilterItemProps {
   id?: number;
-  items: SelectItem[];
+  items?: SelectItem[];
   defaultItemValue?: string;
   isLoading?: boolean;
   error?: boolean;
-  handleChange: (id: number) => void;
+  open?: boolean;
+  handleChange?: (id: number) => void;
 }
 
-const handleEventChange = (handler: (id: number) => void) => (
+const handleEventChange = (handler?: (id: number) => void) => (
   event: React.ChangeEvent<HTMLSelectElement>
-) => handler(+event.target.value);
+) => handler && handler(+event.target.value);
 
 export const SelectFilterItem: FC<SelectFilterItemProps> = ({
   label,
-  id,
+  id = -1,
   items,
   handleChange,
   defaultItemValue,
-  isLoading,
-  error
+  isLoading = false,
+  error = false,
+  open = false // for testing purposes only
 }) => (
-  <>
-    <FilterItem label={ label }>
-      <Select
-        fullWidth={ true }
-        value={ id }
-        onChange={ handleEventChange(handleChange) }
-      >
-        { defaultItemValue && (
-          <MenuItem value={ -1 } key={ 0 }>
-            { defaultItemValue }
-          </MenuItem>
-        ) }
-        { items &&
-          items.map(({ id, text }, index) => (
-            <MenuItem value={ id } key={ index }>
-              { text }
-            </MenuItem>
-          )) }
-      </Select>
-      { error && (
-        <div className="error-message">Couldn't load data</div>
+  <FilterItem label={ label }>
+    <Select
+      data-testid="select"
+      open={ open }
+      fullWidth={ true }
+      value={ id }
+      onChange={ handleEventChange(handleChange) }
+      onClose={ () => null } // for testing purposes only
+    >
+      { defaultItemValue && (
+        <MenuItem value={ -1 } key={ 0 }>
+          { defaultItemValue }
+        </MenuItem>
       ) }
-      { isLoading && <LinearProgress /> }
-    </FilterItem>
-  </>
+      { items &&
+        items.map(({ id, text }, index) => (
+          <MenuItem value={ id } key={ index + 1 }>
+            { text }
+          </MenuItem>
+        )) }
+    </Select>
+    { error && (
+      <div className="error-message" data-testid="error-message">
+        Couldn't load data
+      </div>
+    ) }
+    { isLoading && <LinearProgress data-testid="loader" /> }
+  </FilterItem>
 );
