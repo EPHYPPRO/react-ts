@@ -7,6 +7,11 @@ export function getConfiguredRender<P>(
 ) {
   return (props?: P & Props<any>) => {
     const utils = render(React.cloneElement(ui, props), options);
-    return { ...utils, component: utils.container.firstChild };
+
+    const rerender = (props?: P & Props<any>) => {
+      utils.rerender(React.cloneElement(ui, props));
+    };
+
+    return { ...utils, rerender, component: utils.container.firstChild };
   };
 }
