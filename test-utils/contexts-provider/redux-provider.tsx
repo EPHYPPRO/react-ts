@@ -1,13 +1,9 @@
 import React, { FC } from 'react';
-import { getConfiguredStore } from 'src/store';
 import { Provider } from 'react-redux';
 import { State } from 'src/store/state';
+import { Store } from 'redux';
 
-export const ReduxProvider: FC<{ initialState: Partial<State> }> = ({
+export const ReduxProvider: FC<{ store: Store<State> }> = ({
   children,
-  initialState = {}
-}) => {
-  const store = getConfiguredStore(initialState);
-
-  return <Provider store={ store }>{ children }</Provider>;
-};
+  store
+}) => <Provider store={ store }>{ children }</Provider>;
