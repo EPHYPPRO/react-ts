@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BuyCar should render properly 1`] = `
+<div
+  class="buy-car"
+>
+  <div
+    class="MuiPaper-root-1 MuiPaper-elevation2-5 MuiPaper-rounded-2"
+  >
+    <div
+      class="title"
+    >
+      Buy a car
+    </div>
+    <hr
+      class="MuiDivider-root-28"
+    />
+    <div
+      class="filter-item"
+    >
+      <div
+        class="label"
+        data-testid="label"
+      >
+        Brand:
+      </div>
+      <div
+        class="MuiInputBase-root-53 MuiInput-root-40 MuiInput-underline-44 MuiInputBase-fullWidth-62 MuiInput-fullWidth-47"
+        data-testid="select"
+      >
+        <div
+          class="MuiSelect-root-33"
+        >
+          <div
+            class="MuiSelect-select-34 MuiSelect-selectMenu-37 MuiInputBase-input-63 MuiInput-input-48"
+            aria-pressed="false"
+            tabindex="0"
+            role="button"
+            aria-haspopup="true"
+          >
+            - Select a Brand -
+          </div>
+          <input
+            type="hidden"
+            value="-1"
+          />
+          <svg
+            class="MuiSvgIcon-root-70 MuiSelect-icon-39"
+            focusable="false"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            role="presentation"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        class="MuiLinearProgress-root-116 MuiLinearProgress-colorPrimary-117 MuiLinearProgress-indeterminate-120"
+        role="progressbar"
+        data-testid="loader"
+      >
+        <div
+          class="MuiLinearProgress-bar-126 MuiLinearProgress-barColorPrimary-127 MuiLinearProgress-bar1Indeterminate-129"
+        />
+        <div
+          class="MuiLinearProgress-bar-126 MuiLinearProgress-barColorPrimary-127 MuiLinearProgress-bar2Indeterminate-132"
+        />
+      </div>
+    </div>
+    <div
+      class="filter-item"
+    >
+      <div
+        class="label"
+        data-testid="label"
+      >
+        Model:
+      </div>
+      <div
+        class="MuiInputBase-root-53 MuiInput-root-40 MuiInput-underline-44 MuiInputBase-fullWidth-62 MuiInput-fullWidth-47"
+        data-testid="select"
+      >
+        <div
+          class="MuiSelect-root-33"
+        >
+          <div
+            class="MuiSelect-select-34 MuiSelect-selectMenu-37 MuiInputBase-input-63 MuiInput-input-48"
+            aria-pressed="false"
+            tabindex="0"
+            role="button"
+            aria-haspopup="true"
+          >
+            - Select a brand first -
+          </div>
+          <input
+            type="hidden"
+            value="-1"
+          />
+          <svg
+            class="MuiSvgIcon-root-70 MuiSelect-icon-39"
+            focusable="false"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            role="presentation"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        class="MuiLinearProgress-root-116 MuiLinearProgress-colorPrimary-117 MuiLinearProgress-indeterminate-120"
+        role="progressbar"
+        data-testid="loader"
+      >
+        <div
+          class="MuiLinearProgress-bar-126 MuiLinearProgress-barColorPrimary-127 MuiLinearProgress-bar1Indeterminate-129"
+        />
+        <div
+          class="MuiLinearProgress-bar-126 MuiLinearProgress-barColorPrimary-127 MuiLinearProgress-bar2Indeterminate-132"
+        />
+      </div>
+    </div>
+    <div
+      class="filter-item"
+    >
+      <div
+        class="label"
+        data-testid="label"
+      >
+        Keywords:
+      </div>
+      <div
+        class="MuiFormControl-root-83 MuiFormControl-fullWidth-86"
+      >
+        <div
+          class="MuiInputBase-root-53 MuiInput-root-40 MuiInput-underline-44 MuiInputBase-fullWidth-62 MuiInput-fullWidth-47 MuiInputBase-formControl-54 MuiInput-formControl-41"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input-63 MuiInput-input-48"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <hr
+      class="MuiDivider-root-28"
+    />
+    <div
+      class="search-button"
+    >
+      <button
+        class="MuiButtonBase-root-113 MuiButtonBase-disabled-114 MuiButton-root-87 MuiButton-contained-98 MuiButton-raised-101 MuiButton-disabled-107 MuiButton-fullWidth-112"
+        tabindex="-1"
+        type="button"
+        disabled=""
+      >
+        <span
+          class="MuiButton-label-88"
+        >
+          Search
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
