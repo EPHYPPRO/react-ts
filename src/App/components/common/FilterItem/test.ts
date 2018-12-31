@@ -20,6 +20,6 @@ describe('FilterItem', () => {
   });
 
   it('should render label', async () => {
-    checkForLabelRender(render);
+    checkForLabelRender();
   });
 });

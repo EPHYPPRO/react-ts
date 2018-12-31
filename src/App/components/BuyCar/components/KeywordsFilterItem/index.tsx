@@ -1,58 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { TextFilterItem } from 'src/App/components/common/TextFilterItem';
 import { changeKeywords } from './actions';
-import { Subject } from 'rxjs';
-import {
-  takeUntil,
-  debounceTime,
-  distinctUntilChanged
-} from 'rxjs/operators';
+import { FilterItem } from 'src/App/components/common/FilterItem';
+import { TextField } from '@material-ui/core';
 
-interface KeywordsFilterItemProps {
-  changeKeywords: typeof changeKeywords;
+export interface KeywordsFilterItemProps {
+  changeKeywords?: typeof changeKeywords;
 }
 
 class KeywordsFilterItem extends Component<
   KeywordsFilterItemProps,
   any
 > {
-  private keywordsChangeSubject = new Subject<string>();
-  private unmounted = new Subject();
-
-  componentDidMount() {
-    this.keywordsChangeSubject
-      .asObservable()
-      .pipe(
-        takeUntil(this.unmounted),
-        debounceTime(250),
-        distinctUntilChanged()
-      )
-      .subscribe((keywords) => {
-        this.props.changeKeywords(keywords);
-      });
-  }
-
-  handleChange = (keywords: string) => {
-    this.keywordsChangeSubject.next(keywords);
+  handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const keywords = event.target.value;
+    const { changeKeywords } = this.props;
+    changeKeywords && changeKeywords(keywords);
   }
 
   render() {
     return (
-      <>
-        <TextFilterItem
-          label="Keywords:"
-          handleChange={ this.handleChange }
-          text=""
+      <FilterItem label="Keywords:">
+        <TextField
+          fullWidth={ true }
+          onChange={ this.handleChange }
         />
-      </>
+      </FilterItem>
     );
-  }
-
-  componentWillUnmount() {
-    this.keywordsChangeSubject.complete();
-    this.unmounted.next();
-    this.unmounted.complete();
   }
 }
 
