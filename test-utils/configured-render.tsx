@@ -7,11 +7,8 @@ import {
 
 export type Options = RenderOptions & ContextsOptions;
 
-export function getConfiguredRender<P>(
-  ui: React.ReactElement<any>,
-  options?: Options
-) {
-  return (props?: P & Props<any>) => {
+export function getConfiguredRender<P>(ui: React.ReactElement<any>) {
+  return (props?: P & Props<any>, options?: Options) => {
     const utils = render(
       <ContextsProvider { ...options }>
         { React.cloneElement(ui, props) }

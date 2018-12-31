@@ -2,31 +2,19 @@ import React, { Component } from 'react';
 import './style.scss';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
-import { Subject } from 'rxjs';
-import { debounceTime, takeUntil } from 'rxjs/operators';
 import { State } from 'src/store/state';
 
-interface SearchButtonProps {
-  selectedBrandId: number;
-  selectedModelId: number;
+export interface SearchButtonProps {
+  selectedBrandId?: number;
+  selectedModelId?: number;
+  onClick?: () => void;
 }
 
 class SearchButton extends Component<SearchButtonProps, any> {
-  private clickSubject = new Subject();
-  private unmounted = new Subject();
-
-  componentWillMount() {
-    this.clickSubject
-      .asObservable()
-      .pipe(
-        takeUntil(this.unmounted),
-        debounceTime(500)
-      )
-      .subscribe(() => alert('search started'));
-  }
 
   handleClick = () => {
-    this.clickSubject.next();
+    const { onClick } = this.props;
+    onClick && onClick();
   }
 
   render() {
@@ -44,12 +32,6 @@ class SearchButton extends Component<SearchButtonProps, any> {
         </Button>
       </div>
     );
-  }
-
-  componentWillUnmount() {
-    this.clickSubject.complete();
-    this.unmounted.next();
-    this.unmounted.complete();
   }
 }
 
