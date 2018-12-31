@@ -3,12 +3,12 @@ import * as ReactDOM from 'react-dom';
 import App from './App';
 import './styles.scss';
 import registerServiceWorker from './registerServiceWorker';
-import { configStore } from './store';
+import { getConfiguredStore } from './store';
 import { Provider } from 'react-redux';
 
-const store = configStore();
+const store = getConfiguredStore();
 
-store.subscribe(() => console.log(store.getState()));
+// store.subscribe(() => console.log(store.getState()));
 
 ReactDOM.render(
   <Provider store={ store }>
