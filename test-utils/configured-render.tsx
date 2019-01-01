@@ -10,7 +10,7 @@ export type Options = RenderOptions & ContextsOptions;
 
 export function getConfiguredRender<P>(ui: React.ReactElement<any>) {
   return (props?: P & Props<any>, options: Options = {}) => {
-    const store = getConfiguredStore(options.storeInitialState);
+    let store = getConfiguredStore(options.storeInitialState);
 
     const utils = render(
       <ContextsProvider { ...options } store={ store }>
@@ -23,6 +23,12 @@ export function getConfiguredRender<P>(ui: React.ReactElement<any>) {
       props?: P & Props<any>,
       contextsOptions?: ContextsOptions
     ) => {
+      store = getConfiguredStore(
+        contextsOptions
+          ? contextsOptions.storeInitialState
+          : options.storeInitialState
+      );
+
       utils.rerender(
         <ContextsProvider
           { ...(contextsOptions ? contextsOptions : options) }
@@ -33,11 +39,17 @@ export function getConfiguredRender<P>(ui: React.ReactElement<any>) {
       );
     };
 
-    return {
+    const getStoreState = () => {
+      return store.getState();
+    };
+
+    const newUtils = {
       ...utils,
       rerender,
       component: utils.container.firstChild as HTMLElement,
-      getStoreState: store.getState
+      getStoreState
     };
+
+    return newUtils;
   };
 }
