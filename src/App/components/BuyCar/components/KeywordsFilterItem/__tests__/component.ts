@@ -1,4 +1,4 @@
-import { render } from './test.utils';
+import { render } from './component.utils';
 import fake from 'casual';
 import { fireEvent } from 'react-testing-library';
 
