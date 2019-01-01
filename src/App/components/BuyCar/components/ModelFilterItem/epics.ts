@@ -2,12 +2,10 @@ import { ajax } from 'rxjs/ajax';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { Epic } from 'redux-observable';
 import { FETCH_MODELS, errorModels, receiveModels } from './actions';
-import {
-  ActionAsyncList,
-  ofTypeNStatus
-} from 'src/store/action-types';
+import { ofTypeNStatus } from 'src/store/action-types';
 import { of } from 'rxjs';
 import { State } from 'src/store/state';
+import { ActionAsyncList } from 'src/App/components/common/SelectFilterItem/action-type';
 
 export const fetchModelsEpic: Epic<ActionAsyncList, any, State> = (
   action$,
@@ -15,7 +13,7 @@ export const fetchModelsEpic: Epic<ActionAsyncList, any, State> = (
   get: typeof ajax.getJSON
 ) =>
   action$.pipe(
-    ofTypeNStatus(FETCH_MODELS, 'fetching'),
+    ofTypeNStatus<ActionAsyncList>(FETCH_MODELS, 'fetching'),
     switchMap(() =>
       get(
         `http://localhost:2000/api/models/${

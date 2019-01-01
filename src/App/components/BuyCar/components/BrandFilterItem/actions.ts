@@ -1,8 +1,8 @@
 import {
-  Action,
-  ActionAsyncList
+  Action
 } from 'src/store/action-types';
 import { SelectItem } from 'src/App/components/common/SelectFilterItem';
+import { ActionAsyncList } from 'src/App/components/common/SelectFilterItem/action-type';
 
 export const SELECT_BRAND = 'SELECT_BRAND';
 

@@ -1,7 +1,8 @@
 import { SELECT_BRAND, FETCH_BRANDS } from './actions';
-import { Action, ActionAsyncList } from 'src/store/action-types';
+import { Action } from 'src/store/action-types';
 import { Reducer } from 'redux';
 import { ListState } from 'src/store/state';
+import { ActionAsyncList } from 'src/App/components/common/SelectFilterItem/action-type';
 
 export const selectedBrandId: Reducer<
   number,
