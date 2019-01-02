@@ -1,7 +1,7 @@
 import { SELECT_MODEL, FETCH_MODELS } from './actions';
-import { Action } from 'src/store/action-types';
+import { Action } from 'src/store/models/action-types';
 import { Reducer } from 'redux';
-import { ListState } from 'src/store/state';
+import { ListState } from 'src/store/models/ListState';
 import { ActionAsyncList } from 'src/App/components/common/SelectFilterItem/action-type';
 
 export const selectedModelId: Reducer<

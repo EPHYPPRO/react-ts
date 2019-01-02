@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { ReduxProvider } from './redux-provider';
-import { State } from 'src/store/state';
+import { State } from 'src/store/models/State';
 import { Store } from 'redux';
 
 export interface ContextsProps {

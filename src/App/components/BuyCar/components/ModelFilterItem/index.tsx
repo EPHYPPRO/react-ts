@@ -4,10 +4,10 @@ import {
   SelectFilterItem,
   SelectItem
 } from 'src/App/components/common/SelectFilterItem';
-import { State } from 'src/store/state';
+import { State } from 'src/store/models/State';
 import { selectModel, requestModels } from './actions';
 
-interface ModelFilterItemProps {
+export interface ModelFilterItemProps {
   selectedModelId: number;
   selectModel: typeof selectModel;
   models: SelectItem[];
@@ -58,9 +58,9 @@ class ModelFilterItem extends Component<ModelFilterItemProps, any> {
 export default connect(
   ({ selectedModelId, models, selectedBrandId }: State) => ({
     selectedModelId,
-    models: models.items,
-    isLoading: models.isLoading,
-    error: models.error,
+    models: models && models.items,
+    isLoading: models && models.isLoading,
+    error: models && models.error,
     selectedBrandId
   }),
   {

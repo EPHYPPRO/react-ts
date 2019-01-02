@@ -2,9 +2,9 @@ import { createStore, applyMiddleware, Store, compose } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
 import { reducer } from './reducer';
 import { epic } from './epic';
-import { ajax } from 'rxjs/ajax';
-import { State } from './state';
-import { Action } from './action-types';
+import { State } from './models/State';
+import { Action } from './models/action-types';
+import { dependencies } from './models/Dependencies';
 
 export function getConfiguredStore(
   initialState: State = {}
@@ -16,7 +16,7 @@ export function getConfiguredStore(
       : compose;
 
   const epicMiddleware = createEpicMiddleware({
-    dependencies: ajax.getJSON
+    dependencies
   });
 
   const enhancer = composeEnhancers(applyMiddleware(epicMiddleware));

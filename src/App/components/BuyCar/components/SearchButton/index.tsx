@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './style.scss';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
-import { State } from 'src/store/state';
+import { State } from 'src/store/models/State';
 
 export interface SearchButtonProps {
   selectedBrandId?: number;

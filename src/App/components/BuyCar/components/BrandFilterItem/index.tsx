@@ -5,7 +5,7 @@ import {
   SelectItem
 } from 'src/App/components/common/SelectFilterItem';
 import { selectBrand, requestBrands } from './actions';
-import { State } from 'src/store/state';
+import { State } from 'src/store/models/State';
 import {
   requestModels,
   selectModel,

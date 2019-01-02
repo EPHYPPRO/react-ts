@@ -1,4 +1,4 @@
-import { Action } from 'src/store/action-types';
+import { Action } from 'src/store/models/action-types';
 import { SelectItem } from 'src/App/components/common/SelectFilterItem';
 import { ActionAsyncList } from 'src/App/components/common/SelectFilterItem/action-type';
 

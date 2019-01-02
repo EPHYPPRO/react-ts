@@ -1,21 +1,23 @@
-import { ajax } from 'rxjs/ajax';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { Epic } from 'redux-observable';
 import { FETCH_MODELS, errorModels, receiveModels } from './actions';
-import { ofTypeNStatus } from 'src/store/action-types';
+import { ofTypeNStatus } from 'src/store/models/action-types';
 import { of } from 'rxjs';
-import { State } from 'src/store/state';
+import { State } from 'src/store/models/State';
 import { ActionAsyncList } from 'src/App/components/common/SelectFilterItem/action-type';
+import { SelectItem } from 'src/App/components/common/SelectFilterItem';
+import { Dependencies } from 'src/store/models/Dependencies';
 
-export const fetchModelsEpic: Epic<ActionAsyncList, any, State> = (
-  action$,
-  state$,
-  get: typeof ajax.getJSON
-) =>
+export const fetchModelsEpic: Epic<
+  ActionAsyncList,
+  ActionAsyncList,
+  State,
+  Dependencies
+> = (action$, state$, { getJSON }) =>
   action$.pipe(
     ofTypeNStatus<ActionAsyncList>(FETCH_MODELS, 'fetching'),
     switchMap(() =>
-      get(
+      getJSON<SelectItem[]>(
         `http://localhost:2000/api/models/${
           state$.value.selectedBrandId
         }`

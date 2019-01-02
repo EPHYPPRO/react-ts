@@ -1,5 +1,5 @@
 import { ActionCreator } from 'redux';
-import { Action } from 'src/store/action-types';
+import { Action } from 'src/store/models/action-types';
 
 export const CHANGE_KEYWORDS = 'CHANGE_KEYWORDS';
 
