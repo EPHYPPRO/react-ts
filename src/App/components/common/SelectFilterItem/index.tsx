@@ -31,33 +31,39 @@ export const SelectFilterItem: FC<SelectFilterItemProps> = ({
   isLoading = false,
   error = false,
   open = false // for testing purposes only
-}) => (
-  <FilterItem label={ label }>
-    <Select
-      data-testid="select"
-      open={ open }
-      fullWidth={ true }
-      value={ id }
-      onChange={ handleEventChange(handleChange) }
-      onClose={ () => null } // for testing purposes only
-    >
-      { defaultItemValue && (
-        <MenuItem value={ -1 } key={ 0 }>
-          { defaultItemValue }
-        </MenuItem>
-      ) }
-      { items &&
-        items.map(({ id, text }, index) => (
-          <MenuItem value={ id } key={ index + 1 }>
-            { text }
+}) => {
+  const testProps = {
+    open,
+    onClose: () => null
+  };
+
+  return (
+    <FilterItem label={ label }>
+      <Select
+        data-testid="select"
+        fullWidth={ true }
+        value={ id }
+        onChange={ handleEventChange(handleChange) }
+        { ...(open ? testProps : {}) } // for testing purposes only
+      >
+        { defaultItemValue && (
+          <MenuItem value={ -1 } key={ 0 }>
+            { defaultItemValue }
           </MenuItem>
-        )) }
-    </Select>
-    { error && (
-      <div className="error-message" data-testid="error-message">
-        Couldn't load data
-      </div>
-    ) }
-    { isLoading && <LinearProgress data-testid="loader" /> }
-  </FilterItem>
-);
+        ) }
+        { items &&
+          items.map(({ id, text }, index) => (
+            <MenuItem value={ id } key={ index + 1 }>
+              { text }
+            </MenuItem>
+          )) }
+      </Select>
+      { error && (
+        <div className="error-message" data-testid="error-message">
+          Couldn't load data
+        </div>
+      ) }
+      { isLoading && <LinearProgress data-testid="loader" /> }
+    </FilterItem>
+  );
+};

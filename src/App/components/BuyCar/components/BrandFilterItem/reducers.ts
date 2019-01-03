@@ -1,21 +1,19 @@
-import { SELECT_BRAND, FETCH_BRANDS } from './actions';
-import { Action } from 'src/store/models/action-types';
 import { Reducer } from 'redux';
 import { ListState } from 'src/store/models/ListState';
-import { ActionAsyncList } from 'src/App/components/common/SelectFilterItem/action-type';
+import { BrandSelectAction, BrandsActionAsyncList } from './actions';
 
 export const selectedBrandId: Reducer<
   number,
-  Action<{ id: number }>
+  BrandSelectAction
 > = (state = -1, action) => {
-  return action.type === SELECT_BRAND ? action.id : state; // TODO: make action.type === SELECT_BRAND as function
+  return action.type === 'SELECT_BRAND' ? action.id : state;
 };
 
-export const brands: Reducer<ListState, ActionAsyncList> = (
+export const brands: Reducer<ListState, BrandsActionAsyncList> = (
   state = new ListState(),
   { type, status, items }
 ) => {
-  if (type === FETCH_BRANDS) {
+  if (type === 'FETCH_BRANDS') {
     switch (status) {
       case 'fetching':
         return new ListState(state, {

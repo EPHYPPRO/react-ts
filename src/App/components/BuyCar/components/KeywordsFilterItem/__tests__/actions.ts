@@ -1,5 +1,4 @@
 import {
-  CHANGE_KEYWORDS,
   changeKeywords,
   ActionKeywords
 } from '../actions';
@@ -9,7 +8,7 @@ describe('changeKeywords action creator', () => {
   it('should create an action to change keywords', async () => {
     const keywords = fake.title;
     const expectedAction: ActionKeywords = {
-      type: CHANGE_KEYWORDS,
+      type: 'CHANGE_KEYWORDS',
       keywords
     };
 

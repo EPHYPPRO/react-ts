@@ -1,34 +1,34 @@
 import {
-  Action
+  ActionAsyncList,
+  SelectAction
 } from 'src/store/models/action-types';
 import { SelectItem } from 'src/App/components/common/SelectFilterItem';
-import { ActionAsyncList } from 'src/App/components/common/SelectFilterItem/action-type';
 
-export const SELECT_BRAND = 'SELECT_BRAND';
+export type BrandSelectAction = SelectAction<'SELECT_BRAND'>;
 
-export const selectBrand = (id: number): Action<{ id: number }> => {
+export const selectBrand = (id: number): BrandSelectAction => {
   return {
-    type: SELECT_BRAND,
+    type: 'SELECT_BRAND',
     id
   };
 };
 
-export const FETCH_BRANDS = 'FETCH_BRANDS';
+export type BrandsActionAsyncList = ActionAsyncList<'FETCH_BRANDS'>;
 
-export const requestBrands = (): ActionAsyncList => ({
-  type: FETCH_BRANDS,
+export const requestBrands = (): BrandsActionAsyncList => ({
+  type: 'FETCH_BRANDS',
   status: 'fetching'
 });
 
 export const receiveBrands = (
   items: SelectItem[]
-): ActionAsyncList => ({
-  type: FETCH_BRANDS,
+): BrandsActionAsyncList => ({
+  type: 'FETCH_BRANDS',
   status: 'received',
   items
 });
 
-export const errorBrands = (): ActionAsyncList => ({
-  type: FETCH_BRANDS,
+export const errorBrands = (): BrandsActionAsyncList => ({
+  type: 'FETCH_BRANDS',
   status: 'error'
 });

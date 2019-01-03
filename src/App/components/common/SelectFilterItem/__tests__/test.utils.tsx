@@ -3,7 +3,7 @@ import {
   SelectFilterItem,
   SelectFilterItemProps,
   SelectItem
-} from '.';
+} from '..';
 import { getConfiguredRender } from 'test-utils/configured-render';
 import fake from 'casual';
 

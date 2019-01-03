@@ -9,7 +9,7 @@ import { getConfiguredStore } from 'src/store';
 export type Options = RenderOptions & ContextsOptions;
 
 export function getConfiguredRender<P>(ui: React.ReactElement<any>) {
-  return (props?: P & Props<any>, options: Options = {}) => {
+  return (props?: Partial<P & Props<any>>, options: Options = {}) => {
     let store = getConfiguredStore(options.storeInitialState);
 
     const utils = render(

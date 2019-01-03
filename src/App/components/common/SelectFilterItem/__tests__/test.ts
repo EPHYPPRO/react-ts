@@ -1,7 +1,7 @@
 import fake from 'casual';
 import { buildItem, render } from './test.utils';
 import { fireEvent } from 'react-testing-library';
-import { checkForLabelRender } from '../FilterItem/test.utils';
+import { checkForLabelRender } from '../../FilterItem/test.utils';
 
 describe('SelectFilterItem', () => {
   it('should render properly', async () => {

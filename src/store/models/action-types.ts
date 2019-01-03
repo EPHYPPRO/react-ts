@@ -1,13 +1,26 @@
 import { pipe } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { SelectItem } from 'src/App/components/common/SelectFilterItem';
 
-export type Action<T = {}> = {
-  type: string;
-} & T;
+export type Action<T = string, PL = {}> = {
+  type: T;
+} & PL;
+
+export type SelectAction<T = string, PL = {}> = Action<T, PL> & {
+  id: number;
+};
 
 type Status = 'fetching' | 'received' | 'error';
-export type ActionAsync<T = {}> = Action<T> & {
+export type ActionAsync<T = string, PL = {}> = Action<T, PL> & {
   status: Status;
+};
+
+export type ActionAsyncList<
+  T = string,
+  PL = {},
+  I = SelectItem
+> = ActionAsync<T, PL> & {
+  items?: I[];
 };
 
 /**
@@ -15,13 +28,13 @@ export type ActionAsync<T = {}> = Action<T> & {
  * @param type
  * @param status
  */
-export function ofTypeNStatus<T extends ActionAsync>(
-  type: string,
+export function ofTypeNStatus<A extends ActionAsync>(
+  type: A['type'],
   status: Status
 ) {
   return pipe(
     filter(
-      (action: T) => action.type === type && action.status === status
+      (action: A) => action.type === type && action.status === status
     )
   );
 }

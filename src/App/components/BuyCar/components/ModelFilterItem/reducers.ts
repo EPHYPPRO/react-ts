@@ -1,21 +1,19 @@
-import { SELECT_MODEL, FETCH_MODELS } from './actions';
-import { Action } from 'src/store/models/action-types';
+import { ModelSelectAction, ModelsActionAsyncList } from './actions';
 import { Reducer } from 'redux';
 import { ListState } from 'src/store/models/ListState';
-import { ActionAsyncList } from 'src/App/components/common/SelectFilterItem/action-type';
 
 export const selectedModelId: Reducer<
   number,
-  Action<{ id: number }>
+  ModelSelectAction
 > = (state = -1, action) => {
-  return action.type === SELECT_MODEL ? action.id : state;
+  return action.type === 'SELECT_MODEL' ? action.id : state;
 };
 
-export const models: Reducer<ListState, ActionAsyncList> = (
+export const models: Reducer<ListState, ModelsActionAsyncList> = (
   state = new ListState(),
   { type, status, items }
 ) => {
-  if (type === FETCH_MODELS) {
+  if (type === 'FETCH_MODELS') {
     switch (status) {
       case 'fetching':
         return new ListState(state, {
