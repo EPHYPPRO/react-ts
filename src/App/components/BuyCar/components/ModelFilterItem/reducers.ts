@@ -2,10 +2,12 @@ import { ModelSelectAction, ModelsActionAsyncList } from './actions';
 import { Reducer } from 'redux';
 import { ListState } from 'src/store/models/ListState';
 
+export const emptySelectItemId = -1;
+
 export const selectedModelId: Reducer<
   number,
   ModelSelectAction
-> = (state = -1, action) => {
+> = (state = emptySelectItemId, action) => {
   return action.type === 'SELECT_MODEL' ? action.id : state;
 };
 

@@ -15,13 +15,18 @@ export interface ModelFilterItemProps {
   requestModels?: typeof requestModels;
 }
 
-export class ModelFilterItem extends Component<ModelFilterItemProps, any> {
+export class ModelFilterItem extends Component<
+  ModelFilterItemProps,
+  any
+> {
   componentWillMount() {
-    this.props.requestModels && this.props.requestModels();
+    const { requestModels } = this.props;
+    requestModels && requestModels();
   }
 
   handleChange = (id: number) => {
-    this.props.selectModel && this.props.selectModel(id);
+    const { selectModel } = this.props;
+    selectModel && selectModel(id);
   }
 
   render() {
