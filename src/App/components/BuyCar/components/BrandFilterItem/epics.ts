@@ -1,22 +1,28 @@
-import { switchMap, map, catchError } from 'rxjs/operators';
-import { Epic } from 'redux-observable';
+import { switchMap, map, catchError, flatMap } from 'rxjs/operators';
 import {
   errorBrands,
   receiveBrands,
-  BrandsActionAsyncList
+  BrandsActionAsyncList,
+  BrandSelectAction
 } from './actions';
 import { ofTypeNStatus } from 'src/store/models/action-types';
 import { of } from 'rxjs';
-import { Dependencies } from 'src/store/models/Dependencies';
-import { State } from 'src/store/models/State';
-import { SelectItem } from 'src/App/components/common/SelectFilterItem';
+import { SelectItem, emptySelectItemId } from 'src/App/components/common/SelectFilterItem';
+import { Epic } from 'src/store/models/Epic';
+import { ofType, combineEpics } from 'redux-observable';
+import {
+  receiveModels,
+  requestModels,
+  ModelsActionAsyncList,
+  selectModel,
+  ModelSelectAction
+} from '../ModelFilterItem/actions';
 
-export const fetchBrandsEpic: Epic<
-  BrandsActionAsyncList,
-  BrandsActionAsyncList,
-  State,
-  Dependencies
-> = (action$, state$, { getJSON }) =>
+const fetchBrandsEpic: Epic<BrandsActionAsyncList> = (
+  action$,
+  state$,
+  { getJSON }
+) =>
   action$.pipe(
     ofTypeNStatus<BrandsActionAsyncList>('FETCH_BRANDS', 'fetching'),
     switchMap(() =>
@@ -28,3 +34,22 @@ export const fetchBrandsEpic: Epic<
       return of(errorBrands());
     })
   );
+
+const selectBrandEpic: Epic<
+  BrandSelectAction,
+  ModelsActionAsyncList | ModelSelectAction
+> = (action$) =>
+  action$.pipe(
+    ofType('SELECT_BRAND'),
+    flatMap(({ id }) =>
+      of(
+        id === emptySelectItemId ? receiveModels([]) : requestModels(),
+        selectModel(emptySelectItemId)
+      )
+    )
+  );
+
+export const BrandFilterItemEpic = combineEpics(
+  fetchBrandsEpic,
+  selectBrandEpic
+);
