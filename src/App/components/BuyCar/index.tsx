@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './style.scss';
 import SearchButton from './components/SearchButton';
-import BrandFilterItem from './components/BrandFilterItem';
+import { BrandFilterItem } from './components/BrandFilterItem';
 import { ModelFilterItem } from './components/ModelFilterItem';
 import KeywordsFilterItem from './components/KeywordsFilterItem';
 import { Divider, Paper } from '@material-ui/core';

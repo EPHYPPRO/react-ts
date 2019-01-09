@@ -2,12 +2,12 @@ import { Reducer } from 'redux';
 import { ListState } from 'src/store/models/ListState';
 import { BrandSelectAction, BrandsActionAsyncList } from './actions';
 
-export const selectedBrandId: Reducer<
-  number,
-  BrandSelectAction
-> = (state = -1, action) => {
-  return action.type === 'SELECT_BRAND' ? action.id : state;
-};
+export const emptySelectItemId = -1;
+
+export const selectedBrandId: Reducer<number, BrandSelectAction> = (
+  state = emptySelectItemId,
+  action
+) => (action.type === 'SELECT_BRAND' ? action.id : state);
 
 export const brands: Reducer<ListState, BrandsActionAsyncList> = (
   state = new ListState(),

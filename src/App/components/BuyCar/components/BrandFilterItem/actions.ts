@@ -6,12 +6,10 @@ import { SelectItem } from 'src/App/components/common/SelectFilterItem';
 
 export type BrandSelectAction = SelectAction<'SELECT_BRAND'>;
 
-export const selectBrand = (id: number): BrandSelectAction => {
-  return {
-    type: 'SELECT_BRAND',
-    id
-  };
-};
+export const selectBrand = (id: number): BrandSelectAction => ({
+  type: 'SELECT_BRAND',
+  id
+});
 
 export type BrandsActionAsyncList = ActionAsyncList<'FETCH_BRANDS'>;
 
