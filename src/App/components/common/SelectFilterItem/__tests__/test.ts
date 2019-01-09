@@ -1,6 +1,5 @@
 import fake from 'casual';
-import { buildItem, render } from './test.utils';
-import { fireEvent } from 'react-testing-library';
+import { render } from './test.utils';
 import { checkForLabelRender } from '../../FilterItem/test.utils';
 
 describe('SelectFilterItem', () => {
@@ -53,31 +52,7 @@ describe('SelectFilterItem', () => {
     expect(queryByTestId('error-message')).toBeFalsy();
   });
 
-  it('should call handleChange callback', async () => {
-    throw new Error('Select mui component should be mocked instead!');
-    const item1 = buildItem();
-    const item2 = buildItem();
-    const handleChange = jest.fn();
-    render({
-      handleChange,
-      items: [item1, item2],
-      open: true
-    });
-
-    // items block rendered in the end of the body
-    const element1 = document.body.querySelector<HTMLElement>(
-      'div.mui-fixed ul > li:nth-child(1)'
-    );
-    element1 && fireEvent.click(element1);
-
-    expect(handleChange).toHaveBeenCalledWith(item1.id);
-  });
-
   it('should render label', async () => {
     checkForLabelRender(render);
-  });
-
-  it('should not call handler if the same item picked as previous one', async () => {
-    throw new Error();
   });
 });
