@@ -39,7 +39,7 @@ export function getConfiguredRender<P>(ui: React.ReactElement<any>) {
       );
     };
 
-    const getStoreState = () => {
+    const getState = () => {
       return store.getState();
     };
 
@@ -47,7 +47,7 @@ export function getConfiguredRender<P>(ui: React.ReactElement<any>) {
       ...utils,
       rerender,
       component: utils.container.firstChild as HTMLElement,
-      getStoreState
+      getState
     };
 
     return newUtils;

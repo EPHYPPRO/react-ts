@@ -11,12 +11,12 @@ describe('KeywordsFilterItem', () => {
 
   it('should change store state', async () => {
     const fakeText = fake.title;
-    const { component, getStoreState } = render();
+    const { component, getState } = render();
     const input = component.querySelector('input');
 
     input && fireEvent.change(input, { target: { value: fakeText } });
 
-    const state = getStoreState();
+    const state = getState();
 
     expect(state.keywords).toBe(fakeText);
   });
