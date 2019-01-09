@@ -3,6 +3,8 @@ import './style.scss';
 import { FilterItem, FilterItemProps } from '../FilterItem';
 import { Select, MenuItem, LinearProgress } from '@material-ui/core';
 
+export const emptySelectItemId = -1;
+
 export interface SelectItem {
   id: number;
   text: string;
@@ -18,13 +20,17 @@ export interface SelectFilterItemProps extends FilterItemProps {
   handleChange?: (id: number) => void;
 }
 
-const handleEventChange = (handler?: (id: number) => void) => (
-  event: React.ChangeEvent<HTMLSelectElement>
-) => handler && handler(+event.target.value);
+const handleEventChange = (
+  prevId: number,
+  handler?: (id: number) => void
+) => (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const selectedId = +event.target.value;
+  prevId !== selectedId && handler && handler(+event.target.value);
+};
 
 export const SelectFilterItem: FC<SelectFilterItemProps> = ({
   label,
-  id = -1,
+  id = emptySelectItemId,
   items,
   handleChange,
   defaultItemValue,
@@ -43,7 +49,7 @@ export const SelectFilterItem: FC<SelectFilterItemProps> = ({
         data-testid="select"
         fullWidth={ true }
         value={ id }
-        onChange={ handleEventChange(handleChange) }
+        onChange={ handleEventChange(id, handleChange) }
         { ...(open ? testProps : {}) } // for testing purposes only
       >
         { defaultItemValue && (

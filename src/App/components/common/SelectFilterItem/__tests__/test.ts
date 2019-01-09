@@ -54,6 +54,7 @@ describe('SelectFilterItem', () => {
   });
 
   it('should call handleChange callback', async () => {
+    throw new Error('Select mui component should be mocked instead!');
     const item1 = buildItem();
     const item2 = buildItem();
     const handleChange = jest.fn();
@@ -74,5 +75,9 @@ describe('SelectFilterItem', () => {
 
   it('should render label', async () => {
     checkForLabelRender(render);
+  });
+
+  it('should not call handler if the same item picked as previous one', async () => {
+    throw new Error();
   });
 });
