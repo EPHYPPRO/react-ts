@@ -7,7 +7,7 @@ import {
 } from './actions';
 import { ofTypeNStatus } from 'src/store/models/action-types';
 import { of } from 'rxjs';
-import { SelectItem, emptySelectItemId } from 'src/App/components/common/SelectFilterItem';
+import { emptySelectItemId } from 'src/App/components/common/SelectFilterItem';
 import { Epic } from 'src/store/models/Epic';
 import { ofType, combineEpics } from 'redux-observable';
 import {
@@ -17,6 +17,7 @@ import {
   selectModel,
   ModelSelectAction
 } from '../ModelFilterItem/actions';
+import { SelectItem } from 'src/App/components/common/SelectFilterItem/models';
 
 const fetchBrandsEpic: Epic<BrandsActionAsyncList> = (
   action$,

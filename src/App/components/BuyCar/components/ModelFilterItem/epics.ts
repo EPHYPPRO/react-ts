@@ -6,8 +6,8 @@ import {
 } from './actions';
 import { ofTypeNStatus } from 'src/store/models/action-types';
 import { of } from 'rxjs';
-import { SelectItem } from 'src/App/components/common/SelectFilterItem';
 import { Epic } from 'src/store/models/Epic';
+import { SelectItem } from 'src/App/components/common/SelectFilterItem/models';
 
 export const fetchModelsEpic: Epic<ModelsActionAsyncList> = (
   action$,

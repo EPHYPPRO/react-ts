@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import {
-  SelectFilterItem,
-  SelectItem
-} from 'src/App/components/common/SelectFilterItem';
+import { SelectFilterItem } from 'src/App/components/common/SelectFilterItem';
 import { selectModel, requestModels } from './actions';
+import { SelectItem } from 'src/App/components/common/SelectFilterItem/models';
 
 export interface ModelFilterItemProps {
   selectedModelId?: number;

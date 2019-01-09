@@ -2,7 +2,7 @@ import {
   ActionAsyncList,
   SelectAction
 } from 'src/store/models/action-types';
-import { SelectItem } from 'src/App/components/common/SelectFilterItem';
+import { SelectItem } from 'src/App/components/common/SelectFilterItem/models';
 
 export type BrandSelectAction = SelectAction<'SELECT_BRAND'>;
 

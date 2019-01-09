@@ -1,6 +1,6 @@
 import { pipe } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { SelectItem } from 'src/App/components/common/SelectFilterItem';
+import { SelectItem } from 'src/App/components/common/SelectFilterItem/models';
 
 export type Action<T = string, PL = {}> = {
   type: T;

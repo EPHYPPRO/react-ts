@@ -1,4 +1,4 @@
-import { SelectItem } from 'src/App/components/common/SelectFilterItem';
+import { SelectItem } from 'src/App/components/common/SelectFilterItem/models';
 
 export class ListState<T = SelectItem> {
   items: T[] = [];
