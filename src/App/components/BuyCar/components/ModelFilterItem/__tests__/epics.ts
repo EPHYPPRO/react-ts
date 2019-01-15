@@ -1,6 +1,6 @@
 import { TestScheduler } from 'rxjs/testing';
 import fake from 'casual';
-import { requestModels, receiveModels, errorModels } from '../actions';
+import { requestModels, receiveModels } from '../actions';
 import { State } from 'src/store/models/State';
 import { Dependencies } from 'src/store/models/Dependencies';
 import { FakeSelectItem } from 'src/App/components/common/SelectFilterItem/__tests__/FakeSelectItem';
@@ -36,31 +36,6 @@ describe('fetchModelsEpic', () => {
 
       expectObservable(output$).toBe('---a', {
         a: receiveModels(models)
-      });
-    });
-  });
-
-  it('should dispatch error action when error occurs', async () => {
-    const selectedBrandId = fake.integer(1);
-
-    scheduler.run(({ cold, hot, expectObservable }) => {
-      const action$ = hot('-a', {
-        a: requestModels()
-      });
-
-      const state$: Partial<StateObservable<State>> = {
-        value: { selectedBrandId }
-      };
-
-      const dependencies: Partial<Dependencies> = {
-        getJSON: (url) =>
-          cold('--#')
-      };
-
-      const output$ = fetchModelsEpic(action$, state$, dependencies);
-
-      expectObservable(output$).toBe('---a', {
-        a: errorModels()
       });
     });
   });
